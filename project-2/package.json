@@ -5,7 +5,9 @@
   "dependencies": {
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "sweetalert2": "^7.33.1",
+    "sweetalert2-react-content": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

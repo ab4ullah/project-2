@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+
 class List extends Component {
     state = {
         completed: 'false'
@@ -18,7 +19,7 @@ class List extends Component {
     return (
         <div>
          <ul>
-           <li onClick={this.checked} className={this.state.completed} >{this.props.listi.note}</li>
+           <li onClick={this.checked}  > <span className={this.state.completed}>{this.props.listi.note}</span>  <span onClick={() => this.props.remove(this.props.listi.note)} >✘</span></li>
          </ul>
         </div>
     );
