@@ -13,7 +13,7 @@ class App extends Component {
      },
   ListItem:[
    
-  ]
+  ],
 }
 
 updateForm = (event) =>{
@@ -74,6 +74,8 @@ submitForm = (event) =>{
   })
 }
 
+
+
 removeItem = (list) => {
   
  const newListItem = this.state.ListItem.filter(item => item.note !== list);
@@ -82,21 +84,44 @@ removeItem = (list) => {
  })
 }
 
+removeCompletedItem = (list) =>{
+  if (this.state.completed === 'completed'){
+    const CompeletedRemove = this.state.ListItem.filter(item => item.note !== list);
+ this.setState({
+   ListItem:CompeletedRemove
+ })
+
+  }
+}
+
   render() {
     const NotesList = this.state.ListItem.map((list,index) => {
-      return <List key={index} listi={list} remove= {this.removeItem}/>;
+      return <List key={index} listitems={list} remove= {this.removeItem} />;
       
     })
 
     
     return (
-      <div>
-        <h1>My to do list</h1>
+      <div id='mainDiv'>
+        <h1><span id="firstText">My to do</span> <span id="twoText">list</span></h1>
         <form onSubmit={this.submitForm}>
           <input type='text' name='note' placeholder="what you will do next" onChange={this.updateForm} value={this.state.listData.note} />
           <button type = 'submit'>Add</button>
         </form>
+        <table border="1">
+            <thead>
+              <tr>
+                <th >#</th>
+                <th >Task</th>
+                <th >Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+           
          {NotesList}
+         </tbody>
+         
+         </table>
          <button onClick={this.clearAll} >clear the list</button>
       </div>
     );

@@ -4,7 +4,7 @@ import './App.css';
 
 class List extends Component {
     state = {
-        completed: 'false'
+        completed: 'false',
       }
 
       checked = () => {
@@ -17,11 +17,11 @@ class List extends Component {
 
   render() {
     return (
-        <div>
-         <ul>
-           <li onClick={this.checked}  > <span className={this.state.completed}>{this.props.listi.note}</span>  <span onClick={() => this.props.remove(this.props.listi.note)} >✘</span></li>
-         </ul>
-        </div>
+      <tr>
+           <td>-</td>
+           <td onClick={this.checked}> <span className={this.state.completed}>{this.props.listitems.note}</span>  </td>
+           <td><span role="img" aria-label="delete" onClick={() => this.props.remove(this.props.listitems.note)} >❌</span></td>
+      </tr>
     );
   }
 }
