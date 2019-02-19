@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 
+
 class App extends Component {
   
   state = {
@@ -17,31 +18,33 @@ class App extends Component {
 }
 
 updateForm = (event) =>{
-  // get the value the user typed
+  // take the user value and save it in newData varibal
   const newData = (event.target.value);
-  // get the orginal state
+  // take a copy of the orginal object
   const OriginalState = this.state.listData;
-  // make a copy of orginal state
-  this.setState(OriginalState)
-  // make the copy with the data the user typed
+  // assign the copy
   const copy = Object.assign({},OriginalState);
+  // take the name of input 
   const key = event.target.name;
+  // assign the new data to the copy
   copy[key] = newData
   
-  // update the states with the new copy
+  // set the data to the list data
   this.setState({
     listData:copy
   })
 }
 
 submitForm = (event) =>{
+  // do not refrese the page
   event.preventDefault()
-  console.log(this.state.listData);
+  // take a copy of the array
   const copy = this.state.ListItem.slice(0)
-  
+    //in cause the use not type empty string push the data to array
     if (this.state.listData.note.trim() !== ''){
+      // push the data to the array
       copy.push(this.state.listData)
-      
+      // set state empty to be ready to next vlaue
       this.setState({
         ListItem:copy,
         listData:{
@@ -49,6 +52,7 @@ submitForm = (event) =>{
         }
       })
     }
+    //
     else{
       const MySwal = withReactContent(Swal)
       MySwal.fire({
@@ -103,9 +107,13 @@ removeCompletedItem = (list) =>{
 
     let output;
     if(this.state.ListItem.length === 0){
-      output = <h2> list empty </h2>
+      output = <div id="empty"><br/> <hr/> <br/> <hr/><h2>  You have no task to do </h2><hr/> <br/> <hr/> <br/></div>
+      
     } else{
-    output = <div><table border="1">
+    output = <div id="tableContents">
+    <hr/>
+    <table>
+    
     <thead>
       <tr>
         <th >#</th>
@@ -113,25 +121,29 @@ removeCompletedItem = (list) =>{
         <th >Remove</th>
       </tr>
     </thead>
+
     <tbody>
-   
+    
  {NotesList}
+ 
  </tbody>
  
  </table>
-    <button onClick={this.clearAll} >clear the list</button>
+     <hr/>
+    <button id="ClearBtn" onClick={this.clearAll} >clear list </button>
     </div>
     }
 
     
     return (
       <div id='mainDiv'>
-        <h1><span id="firstText">My to do</span> <span id="twoText">list</span></h1>
-        <form onSubmit={this.submitForm}>
-          <input type='text' name='note' placeholder="what you will do next" onChange={this.updateForm} value={this.state.listData.note} />
-          <button type = 'submit'>Add</button>
-        </form>
-        
+       <header>
+          <h1><span id="firstText">My to do</span> <span id="twoText">list</span></h1>
+          <form onSubmit={this.submitForm}>
+            <input autofocus type='text' name='note' placeholder="what you will do next" onChange={this.updateForm} value={this.state.listData.note} />
+            <button id="addbtn" type = 'submit'>Add</button>
+          </form>
+        </header>
         {output}
         
          

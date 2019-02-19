@@ -17,11 +17,11 @@ class List extends Component {
 
   render() {
     return (
+      
       <tr>
            <td>{this.props.id+1}</td>
            <td onClick={this.checked}> <span className={this.state.completed}>{this.props.listitems.note}</span>  </td>
            <td><span role="img" aria-label="delete" onClick={() => this.props.remove(this.props.listitems.note)} >❌</span></td>
-           
       </tr>
     );
   }
