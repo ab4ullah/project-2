@@ -108,10 +108,10 @@ class App extends Component {
       return <List key={index} id={index} listitems={list} remove={this.removeItem} />;
 
     })
-    window.localStorage.setItem("ListItem", JSON.stringify(this.state.ListItem));
-    // var getdata = localStorage.getItem('ListItem');
-    // console.log(getdata);
-    // checked if the array is empry show the empty div 
+    // window.localStorage.setItem("ListItem", JSON.stringify(this.state.ListItem));
+    // // var getdata = localStorage.getItem('ListItem');
+    // // console.log(getdata);
+    // // checked if the array is empry show the empty div 
     let output;
     if (this.state.ListItem.length === 0) {
       output = <div id="empty"><br /> <hr /> <br /> <hr /><h2>  You have no task to do </h2><hr /> <br /> <hr /> <br /></div>

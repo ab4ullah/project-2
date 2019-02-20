@@ -667,13 +667,7 @@ body{
 
 
 .vl2 {
-  border-left: 2px solid red;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-  left: 7.3%;
-  margin-left: -3px;
-  top: 0%;
+ display: none;
 }
 }
 
