@@ -3,10 +3,6 @@
   margin: 0px;
 }
 
-/* import Google fonts */
-@import url('https://fonts.googleapis.com/css?family=Righteous');
-
-
 /* Class Name For completed task */
 .completed{
   text-decoration: line-through;
@@ -598,6 +594,7 @@ input[type=text]:focus{
   display: none;
 }
 
+/* for empty div */
 #empty{
   background: #FCF8C8;
   margin-top: 0px;

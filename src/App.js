@@ -11,7 +11,8 @@ class App extends Component {
 
   state = {
     listData: {
-      note: ''
+      note: '',
+      complete: 'false'
     },
     // the array for task
     ListItem: [
@@ -81,14 +82,34 @@ class App extends Component {
     })
   }
 
+  updateCompleteList = (isComplete , index) =>  {
+
+    
+    console.log(isComplete , index , "\n\n\n\n ***** ")
+
+    console.log(this.state.ListItem )
+    const copy = this.state.ListItem.slice(0)
+
+    copy[index].complete = isComplete ; 
+
+    this.setState({
+      ListItem: copy 
+    })
+  }
   // this function for remove one vlaue
-  removeItem = (list) => {
+  removeItem = (list ) => {
+
+  
     // use filter go throw loop on array to find the clicked vlaue to remove it
     const newListItem = this.state.ListItem.filter(item => item.note !== list);
+
     // update the array after the removed
     this.setState({
       ListItem: newListItem
     })
+
+    console.log("after filtering " , this.state.ListItem)
+
   }
 
 
@@ -105,7 +126,7 @@ class App extends Component {
   render() {
     // use map to pass the array value to list componets also pass the remove value and id
     const NotesList = this.state.ListItem.map((list, index) => {
-      return <List key={index} id={index} listitems={list} remove={this.removeItem} />;
+      return <List key={index} id={index} listitems={list} remove={this.removeItem} updateCompleteList={this.updateCompleteList} />;
 
     })
     // window.localStorage.setItem("ListItem", JSON.stringify(this.state.ListItem));

@@ -9,7 +9,7 @@
 
 ## `Technologies`
 
-1- reactJS <br>
+1- React JS <br>
 2- Responsive design <br>
 3- sweatalert library
 
